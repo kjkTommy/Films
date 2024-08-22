@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+}
+h1 {
+    color: white;
+    margin-top: -2px;
+}
+.Container-title {
+    background-color: black;
+    height: 36px;
+}
