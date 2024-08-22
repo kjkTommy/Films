@@ -1,3 +1,5 @@
+import { Film } from "../types";
+
 const apiKey = localStorage.getItem("token");
 
 export const URL = {
@@ -28,7 +30,7 @@ export const getFilmsList = async (url: string) => {
     }
 };
 
-export const getFilmDetails = async (filmId: string) => {
+export const getFilmDetails = async (filmId: string): Promise<Film> => {
     try {
         const response = await fetch(`https://api.themoviedb.org/3/movie/${filmId}?language=ru-RU`, {
             method: "GET",
@@ -41,12 +43,17 @@ export const getFilmDetails = async (filmId: string) => {
         if (!response.ok) {
             throw new Error(data.status_message || "Failed to fetch film details");
         }
+
         return {
             id: data.id,
             title: data.title,
-            release: data.release_date,
-            vote_average: data.vote_average,
+            overview: data.overview,
+            release_date: data.release_date,
             poster_path: data.poster_path,
+            backdrop_path: data.backdrop_path || "",
+            vote_average: data.vote_average,
+            vote_count: data.vote_count || 0,
+            favorite: false,
         };
     } catch (error) {
         console.error("API request failed:", error);

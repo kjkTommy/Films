@@ -35,7 +35,7 @@ export default function FilmDetail() {
                         {film.title}
                     </Typography>
                     <Typography variant='body2' color='text.secondary'>
-                        Release Date: {film.release}
+                        Release Date: {film.release_date}
                     </Typography>
                     <Typography variant='body2' color='text.secondary'>
                         Rating: {film.vote_average}

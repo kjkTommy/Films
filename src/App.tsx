@@ -10,7 +10,7 @@ import { Title } from "./title/Title";
 function App() {
     const [sortSelect, setSortSelect] = useState<string>("Популярности");
     const [page, setPage] = useState<number>(1);
-    const [filmsList, setFilmsList] = useState<any[]>([]);
+    const [filmsList] = useState<any[]>([]);
     const [foundFilm, setFoundFilm] = useState<any | null>(null);
     const [token, setToken] = useState<string | null>(null);
 

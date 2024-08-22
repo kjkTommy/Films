@@ -18,7 +18,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ sortSelect, setSortSelect, pag
 
     const fetchFilms = async (page: number) => {
         try {
-            const url = sortSelect === "Популярности" ? `${URL.POPULAR}&page=${page}` : `${URL.TOP_RATED}&page=${page}`;
+            const endpoint = sortSelect === "Популярности" ? URL.POPULAR : URL.TOP_RATED;
+            const fetchUrl = `${endpoint}&page=${page}`;
+
+            const response = await fetch(fetchUrl);
+            const data = await response.json();
+
+            console.log("Fetched films data:", data);
         } catch (error) {
             console.error("Error fetching films list:", error);
         }
@@ -30,7 +36,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ sortSelect, setSortSelect, pag
         setSelectedGenres([]);
     };
 
-    const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
+    const handlePageChange = (_event: React.ChangeEvent<unknown>, newPage: number) => {
         setPage(newPage);
     };
 

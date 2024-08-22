@@ -5,7 +5,7 @@ import { FiltersProps, Genre } from "../../types";
 import "../Sidebar.css";
 import { dataSelect } from "../data/data";
 
-export function Filters({ sortSelect, setSortSelect, value, setValue, selectedGenres, setSelectedGenres, handlePageChange, handleClickReset }: FiltersProps) {
+export function Filters({ sortSelect, setSortSelect, value, setValue, selectedGenres, setSelectedGenres, handlePageChange }: FiltersProps) {
     const [genres, setGenres] = useState<Genre[]>([]);
     const currentYear = new Date().getFullYear();
 
@@ -25,13 +25,13 @@ export function Filters({ sortSelect, setSortSelect, value, setValue, selectedGe
         setSortSelect(event.target.value);
     };
 
-    const handleScrollYear = (event: Event, newValue: number | number[]) => {
+    const handleScrollYear = (_event: Event, newValue: number | number[]) => {
         setValue(newValue as number[]);
     };
 
     const yearValueText = (value: number) => `${value}`;
 
-    const handleGenresChange = (event: React.SyntheticEvent, newValue: Genre[]) => {
+    const handleGenresChange = (_event: React.SyntheticEvent, newValue: Genre[]) => {
         setSelectedGenres(newValue);
     };
 
